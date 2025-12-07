@@ -65,6 +65,24 @@
             <version>5.75</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.qoppa.jpdfwriter/jpdfwriter -->
+        <dependency>
+            <groupId>com.qoppa.jpdfwriter</groupId>
+            <artifactId>jpdfwriter</artifactId>
+            <version>v2021R1.00</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mhschmieder</groupId>
+            <artifactId>fxcontrols</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mhschmieder</groupId>
+            <artifactId>fxgui</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 	<build>

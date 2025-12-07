@@ -23,8 +23,8 @@
  *
  * This file is part of the fxpdfreport Library
  *
- * You should have received a copy of the MIT License along with the
- * fxpdfreport Library. If not, see <https://opensource.org/licenses/MIT>.
+ * You should have received a copy of the MIT License along with the fxpdfreport
+ * Library. If not, see <https://opensource.org/licenses/MIT>.
  *
  * Project: https://github.com/mhschmieder/fxpdfreport
  */

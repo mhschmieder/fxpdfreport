@@ -28,33 +28,26 @@
  *
  * Project: https://github.com/mhschmieder/fxpdfreport
  */
-package com.mhschmieder.fxpdfreport;
+package com.mhschmieder.fxpdfreport.util;
 
 import com.mhschmieder.fxgraphics.image.ImageUtilities;
 import com.mhschmieder.jpdfreport.PdfFonts;
 import com.mhschmieder.jpdfreport.PdfTools;
-import com.pdfjet.Image;
 import com.pdfjet.PDF;
 import com.pdfjet.Page;
-import javafx.scene.Node;
 import javafx.scene.layout.Region;
 
 import java.awt.image.BufferedImage;
 
-public class FxPdfTools {
+/**
+ * Static utility class to wrap the export of JavaFX nodes on the screen to PDF
+ * graphics in report format using PDFJet alongside specific layout assumptions
+ * in the context of visualization panes with charts and annotation.
+ */
+public final class FxPdfJetTools {
 
-    public FxPdfTools() {
-        // NOTE Auto-generated constructor stub
-    }
-
-    public static Image getImageSnapshot( final PDF document, final Node node ) {
-        // Get an AWT BufferedImage as a snapshot of the source node.
-        final BufferedImage bufferedImage = ImageUtilities
-                .getBufferedImageSnapshot( node );
-
-        // Convert to a PdfJet Image.
-        return PdfTools.getImageSnapshot( document, bufferedImage );
-    }
+    // NOTE: The constructor is disabled, as this is a static class.
+    private FxPdfJetTools() {}
 
     public static double writeVisualization( final PDF document,
                                              final Page visualizationPage,
@@ -69,10 +62,12 @@ public class FxPdfTools {
                                              final Region chartLegend )
             throws Exception {
         // Get an AWT BufferedImage as a snapshot of the first chart.
-        final BufferedImage chart1Snapshot = ImageUtilities.getBufferedImageSnapshot( chart1 );
+        final BufferedImage chart1Snapshot = ImageUtilities
+                .getBufferedImageSnapshot( chart1 );
 
         // Get an AWT BufferedImage as a snapshot of the second chart.
-        final BufferedImage chart2Snapshot = ImageUtilities.getBufferedImageSnapshot( chart2 );
+        final BufferedImage chart2Snapshot = ImageUtilities
+                .getBufferedImageSnapshot( chart2 );
 
         // Get an AWT BufferedImage as a snapshot of the chart legend.
         final BufferedImage chartLegendSnapshot = ImageUtilities
