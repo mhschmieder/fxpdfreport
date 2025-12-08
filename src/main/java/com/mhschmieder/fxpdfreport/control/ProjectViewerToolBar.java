@@ -28,8 +28,10 @@
  *
  * Project: https://github.com/mhschmieder/fxpdfreport
  */
-package com.mhschmieder.fxcontrols.control;
+package com.mhschmieder.fxpdfreport.control;
 
+import com.mhschmieder.fxcontrols.control.FileActionButtons;
+import com.mhschmieder.fxcontrols.control.NavigationButtons;
 import com.mhschmieder.jcommons.util.ClientProperties;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.Region;

@@ -28,9 +28,11 @@
  *
  * Project: https://github.com/mhschmieder/fxpdfreport
  */
-package com.mhschmieder.fxgui.stage;
+package com.mhschmieder.fxpdfreport.stage;
 
-import com.mhschmieder.fxcontrols.control.ProjectViewerToolBar;
+import com.mhschmieder.fxgui.stage.ExtensionFilters;
+import com.mhschmieder.fxgui.stage.XStage;
+import com.mhschmieder.fxpdfreport.control.ProjectViewerToolBar;
 import com.mhschmieder.fxpdfreport.util.PdfWriterTools;
 import com.mhschmieder.jcommons.branding.ProductBranding;
 import com.mhschmieder.jcommons.io.FileMode;
