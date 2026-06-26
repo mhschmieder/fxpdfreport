@@ -30,8 +30,8 @@
  */
 package com.mhschmieder.fxpdfreport.cad;
 
-import com.mhschmieder.fxcadgraphics.Region2D;
-import com.mhschmieder.fxcadgraphics.Surface;
+import com.mhschmieder.fxgraphics.geometry.Region2D;
+import com.mhschmieder.fxgraphics.geometry.Surface;
 import com.mhschmieder.fxcadgui.layout.SurfacesInformationPane;
 import com.mhschmieder.jcommons.text.TextUtilities;
 import com.mhschmieder.jpdfreport.PdfFonts;
