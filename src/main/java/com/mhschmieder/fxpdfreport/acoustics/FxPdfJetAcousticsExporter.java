@@ -30,7 +30,7 @@
  */
 package com.mhschmieder.fxpdfreport.acoustics;
 
-import com.mhschmieder.fxphysicsgui.layout.FrequencyRangeInformationPane;
+import com.mhschmieder.fxgui.layout.FrequencyRangeInformationPane;
 import com.mhschmieder.jpdfreport.PdfFonts;
 import com.mhschmieder.jpdfreport.PdfTools;
 import com.pdfjet.Align;

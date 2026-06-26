@@ -30,7 +30,7 @@
  */
 package com.mhschmieder.fxpdfreport.physics;
 
-import com.mhschmieder.fxphysicsgui.layout.NaturalEnvironmentInformationPane;
+import com.mhschmieder.fxgui.layout.NaturalEnvironmentInformationPane;
 import com.mhschmieder.jpdfreport.PdfFonts;
 import com.mhschmieder.jpdfreport.PdfTools;
 import com.pdfjet.Align;
