@@ -30,7 +30,7 @@
  */
 package com.mhschmieder.fxpdfreport.stage;
 
-import com.mhschmieder.fxgui.stage.ExtensionFilters;
+import com.mhschmieder.fxgui.file.ExtensionFilters;
 import com.mhschmieder.fxgui.stage.XStage;
 import com.mhschmieder.fxpdfreport.control.ProjectViewerToolBar;
 import com.mhschmieder.fxpdfreport.util.PdfWriterTools;
