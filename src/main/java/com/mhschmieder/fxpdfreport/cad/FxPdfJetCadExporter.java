@@ -32,7 +32,7 @@ package com.mhschmieder.fxpdfreport.cad;
 
 import com.mhschmieder.fxgraphics.geometry.Region2D;
 import com.mhschmieder.fxgraphics.geometry.Surface;
-import com.mhschmieder.fxcadgui.layout.SurfacesInformationPane;
+import com.mhschmieder.fxgui.layout.SurfacesInformationPane;
 import com.mhschmieder.jcommons.text.TextUtilities;
 import com.mhschmieder.jpdfreport.PdfFonts;
 import com.mhschmieder.jpdfreport.PdfTools;
