@@ -44,14 +44,12 @@
         <dependency>
             <groupId>com.mhschmieder</groupId>
             <artifactId>jcommons</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.mhschmieder</groupId>
             <artifactId>jpdfreport</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.mhschmieder</groupId>
@@ -80,18 +78,6 @@
         <dependency>
             <groupId>com.mhschmieder</groupId>
             <artifactId>fxgui</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mhschmieder</groupId>
-            <artifactId>fxcadgui</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mhschmieder</groupId>
-            <artifactId>fxacousticsgui</artifactId>
             <version>0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
