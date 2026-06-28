@@ -41,7 +41,7 @@ import com.mhschmieder.jcommons.io.FileUtilities;
 import com.mhschmieder.jcommons.io.FilenameUtilities;
 import com.mhschmieder.jcommons.io.IoUtilities;
 import com.mhschmieder.jcommons.util.ClientProperties;
-import com.mhschmieder.jcommons.xml.XmlUtilities;
+import com.mhschmieder.jgraphics.xml.XmlUtilities;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
