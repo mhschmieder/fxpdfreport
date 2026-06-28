@@ -38,7 +38,7 @@ import javafx.scene.layout.Region;
 
 public final class ProjectViewerToolBar extends ToolBar {
 
-    // Declare all of the tool bar components.
+    // Declare all the tool bar components.
     public FileActionButtons _fileActionButtons;
     public NavigationButtons _navigationButtons;
 

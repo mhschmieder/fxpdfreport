@@ -28,10 +28,13 @@
  *
  * Project: https://github.com/mhschmieder/fxpdfreport
  */
-package com.mhschmieder.fxpdfreport.cad;
+package com.mhschmieder.fxpdfreport;
 
 import com.mhschmieder.fxgraphics.geometry.Region2D;
 import com.mhschmieder.fxgraphics.geometry.Surface;
+import com.mhschmieder.fxgui.layout.FrequencyRangeInformationPane;
+import com.mhschmieder.fxgui.layout.LogoPane;
+import com.mhschmieder.fxgui.layout.NaturalEnvironmentInformationPane;
 import com.mhschmieder.fxgui.layout.SurfacesInformationPane;
 import com.mhschmieder.jcommons.text.TextUtilities;
 import com.mhschmieder.jpdfreport.PdfFonts;
@@ -40,23 +43,79 @@ import com.mhschmieder.jphysics.measure.DistanceUnit;
 import com.mhschmieder.jphysics.measure.UnitConversion;
 import com.pdfjet.Align;
 import com.pdfjet.Cell;
+import com.pdfjet.Image;
 import com.pdfjet.PDF;
 import com.pdfjet.Page;
 import com.pdfjet.Point;
 import com.pdfjet.Table;
 
+import java.awt.image.BufferedImage;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Static utility class to export CAD graphics and GUI elements to PDF using the
- * PDFJet library. This keeps core libraries from adding PDFJet dependencies.
- */
-public final class FxPdfJetCadExporter {
+public final class FxPdfJetExporter {
 
     // NOTE: The constructor is disabled, as this is a static class.
-    private FxPdfJetCadExporter() {}
+    private FxPdfJetExporter() {}
+
+    public static void exportLogoToPdf( final LogoPane logoPane,
+                                        final PDF document,
+                                        final Page visualizationPage,
+                                        final double xOffset,
+                                        final double yOffset,
+                                        final double scaleFactor )
+            throws Exception {
+        // Convert the AWT BufferedImage logo snapshot to a PdfJet Image.
+        final BufferedImage logo = logoPane.getLogoForReport();
+        final Image logoImage = PdfTools.getImageSnapshot( document, logo );
+        if ( logoImage != null ) {
+            logoImage.setPosition( xOffset, yOffset );
+            logoImage.scaleBy( scaleFactor );
+            logoImage.drawOn( visualizationPage );
+        }
+    }
+
+    public Point exportFrequencyRangeToPdf(
+            final FrequencyRangeInformationPane frequencyRangeInformationPane,
+            final PDF document,
+            final Page page,
+            final Point initialPoint,
+            final PdfFonts borderlessTableFonts ) throws Exception {
+        // Collect the information fields to render to a single-column table.
+        final String[] information = frequencyRangeInformationPane
+                .getFrequencyRangeInformation();
+
+        // Write the Frequency Range Information Table, left-aligned.
+        return PdfTools.writeInformationTable(
+                document,
+                page,
+                initialPoint,
+                borderlessTableFonts,
+                Align.LEFT,
+                information );
+    }
+
+    public Point exportNaturalEnvironmentToPdf(
+            final NaturalEnvironmentInformationPane naturalEnvironmentInformationPane,
+            final PDF document,
+            final Page page,
+            final Point initialPoint,
+            final PdfFonts borderlessTableFonts )
+            throws Exception {
+        // Collect the information fields to render to a single-column table.
+        final String[] information = naturalEnvironmentInformationPane
+                .getNaturalEnvironmentInformation();
+
+        // Write the Natural Environment Information Table, left-aligned.
+        return PdfTools.writeInformationTable(
+                document,
+                page,
+                initialPoint,
+                borderlessTableFonts,
+                Align.LEFT,
+                information );
+    }
 
     public static Point exportSurfacesToPdf(
             final SurfacesInformationPane surfacesInformationPane,
@@ -193,7 +252,7 @@ public final class FxPdfJetCadExporter {
                 false );
 
         // Write the Region Surfaces Table.
-        final List< Surface > numberedSurfaces = region.getSurfaces();
+        final List<Surface> numberedSurfaces = region.getSurfaces();
         for ( final Surface surfaceReference : numberedSurfaces ) {
             final List< Cell > surfacesRowData = new ArrayList<>();
 
