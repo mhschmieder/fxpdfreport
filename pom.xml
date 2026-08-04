@@ -41,12 +41,7 @@
 	<dependencies>
         <dependency>
             <groupId>com.mhschmieder</groupId>
-            <artifactId>jcommons</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mhschmieder</groupId>
-            <artifactId>jpdfreport</artifactId>
+            <artifactId>fxcontrols</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
@@ -55,10 +50,19 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.hynnet</groupId>
-            <artifactId>pdfjet</artifactId>
-            <version>5.75</version>
-            <scope>compile</scope>
+            <groupId>com.mhschmieder</groupId>
+            <artifactId>fxgui</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mhschmieder</groupId>
+            <artifactId>jcommons</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mhschmieder</groupId>
+            <artifactId>jpdfreport</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.qoppa.jpdfwriter/jpdfwriter -->
         <dependency>
@@ -67,14 +71,9 @@
             <version>v2021R1.00</version>
         </dependency>
         <dependency>
-            <groupId>com.mhschmieder</groupId>
-            <artifactId>fxcontrols</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mhschmieder</groupId>
-            <artifactId>fxgui</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.pdfjet</groupId>
+            <artifactId>pdfjet</artifactId>
+            <version>8.13</version>
         </dependency>
     </dependencies>
 
