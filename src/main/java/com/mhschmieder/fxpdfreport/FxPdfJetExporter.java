@@ -57,7 +57,8 @@ import java.util.List;
 public final class FxPdfJetExporter {
 
     // NOTE: The constructor is disabled, as this is a static class.
-    private FxPdfJetExporter() {}
+    private FxPdfJetExporter() {
+    }
 
     public static void exportLogoToPdf( final LogoPane logoPane,
                                         final PDF document,
@@ -76,114 +77,116 @@ public final class FxPdfJetExporter {
         }
     }
 
-    public Point exportFrequencyRangeToPdf(
-            final FrequencyRangeInformationPane frequencyRangeInformationPane,
-            final PDF document,
-            final Page page,
-            final Point initialPoint,
-            final PdfFonts borderlessTableFonts ) throws Exception {
-        // Collect the information fields to render to a single-column table.
-        final String[] information = frequencyRangeInformationPane
-                .getFrequencyRangeInformation();
-
-        // Write the Frequency Range Information Table, left-aligned.
-        return PdfTools.writeInformationTable(
-                document,
-                page,
-                initialPoint,
-                borderlessTableFonts,
-                Align.LEFT,
-                information );
-    }
-
-    public Point exportNaturalEnvironmentToPdf(
-            final NaturalEnvironmentInformationPane naturalEnvironmentInformationPane,
-            final PDF document,
-            final Page page,
-            final Point initialPoint,
-            final PdfFonts borderlessTableFonts )
+    public static Point exportSurfacesToPdf( final SurfacesInformationPane surfacesInformationPane,
+                                             final PDF document,
+                                             final Page page,
+                                             final Point initialPoint,
+                                             final PdfFonts borderlessTableFonts )
             throws Exception {
         // Collect the information fields to render to a single-column table.
-        final String[] information = naturalEnvironmentInformationPane
-                .getNaturalEnvironmentInformation();
-
-        // Write the Natural Environment Information Table, left-aligned.
-        return PdfTools.writeInformationTable(
-                document,
-                page,
-                initialPoint,
-                borderlessTableFonts,
-                Align.LEFT,
-                information );
-    }
-
-    public static Point exportSurfacesToPdf(
-            final SurfacesInformationPane surfacesInformationPane,
-            final PDF document,
-            final Page page,
-            final Point initialPoint,
-            final PdfFonts borderlessTableFonts )
-            throws Exception {
-        // Collect the information fields to render to a single-column table.
-        final String[] information = surfacesInformationPane
-                .getSurfaceInformation();
+        final String[] information
+                = surfacesInformationPane.getSurfaceInformation();
 
         // Write the Surfaces Information Table, left-aligned.
-        return PdfTools.writeInformationTable(
-                document,
-                page,
-                initialPoint,
-                borderlessTableFonts,
-                Align.LEFT,
-                information );
+        return PdfTools.writeInformationTable( document,
+                                               page,
+                                               initialPoint,
+                                               borderlessTableFonts,
+                                               Align.LEFT,
+                                               information );
     }
 
-    public void exportRegionToPdf(
-            final Region2D region,
-            final PDF document,
-            final Page page,
-            final Point initialPoint,
-            final PdfFonts fonts,
-            final NumberFormat pNumberFormat,
-            final DistanceUnit distanceUnit ) {
+    public Point exportFrequencyRangeToPdf( final FrequencyRangeInformationPane frequencyRangeInformationPane,
+                                            final PDF document,
+                                            final Page page,
+                                            final Point initialPoint,
+                                            final PdfFonts borderlessTableFonts )
+            throws Exception {
+        // Collect the information fields to render to a single-column table.
+        final String[] information
+                = frequencyRangeInformationPane.getFrequencyRangeInformation();
+
+        // Write the Frequency Range Information Table, left-aligned.
+        return PdfTools.writeInformationTable( document,
+                                               page,
+                                               initialPoint,
+                                               borderlessTableFonts,
+                                               Align.LEFT,
+                                               information );
+    }
+
+    public Point exportNaturalEnvironmentToPdf( final NaturalEnvironmentInformationPane naturalEnvironmentInformationPane,
+                                                final PDF document,
+                                                final Page page,
+                                                final Point initialPoint,
+                                                final PdfFonts borderlessTableFonts )
+            throws Exception {
+        // Collect the information fields to render to a single-column table.
+        final String[] information
+                =
+                naturalEnvironmentInformationPane.getNaturalEnvironmentInformation();
+
+        // Write the Natural Environment Information Table, left-aligned.
+        return PdfTools.writeInformationTable( document,
+                                               page,
+                                               initialPoint,
+                                               borderlessTableFonts,
+                                               Align.LEFT,
+                                               information );
+    }
+
+    public void exportRegionToPdf( final Region2D region,
+                                   final PDF document,
+                                   final Page page,
+                                   final Point initialPoint,
+                                   final PdfFonts fonts,
+                                   final NumberFormat pNumberFormat,
+                                   final DistanceUnit distanceUnit ) {
         // NOTE: Regions are currently stored in User Units vs. Meters etc.
         final String distanceUnitLabel = distanceUnit.abbreviation();
 
         // Potentially adjust the floating-point precision of distances.
         final int precision = DistanceUnit.MILLIMETERS.equals( distanceUnit )
-                ? 0
-                : 2;
-        final NumberFormat distanceNumberFormat = ( NumberFormat ) pNumberFormat.clone();
+                              ? 0
+                              : 2;
+        final NumberFormat distanceNumberFormat
+                = ( NumberFormat ) pNumberFormat.clone();
         distanceNumberFormat.setMaximumFractionDigits( precision );
 
         // Convert to User Units, as the report should follow those preferences.
-        final double xConverted = UnitConversion.convertDistance(
-                region.getX(), DistanceUnit.METERS, distanceUnit );
-        final double yConverted = UnitConversion.convertDistance(
-                region.getY(), DistanceUnit.METERS, distanceUnit );
-        final double widthConverted = UnitConversion.convertDistance(
-                region.getWidth(), DistanceUnit.METERS, distanceUnit );
-        final double heightConverted = UnitConversion.convertDistance(
-                region.getHeight(), DistanceUnit.METERS, distanceUnit );
+        final double xConverted = UnitConversion.convertDistance( region.getX(),
+                                                                  DistanceUnit.METERS,
+                                                                  distanceUnit );
+        final double yConverted = UnitConversion.convertDistance( region.getY(),
+                                                                  DistanceUnit.METERS,
+                                                                  distanceUnit );
+        final double widthConverted
+                = UnitConversion.convertDistance( region.getWidth(),
+                                                  DistanceUnit.METERS,
+                                                  distanceUnit );
+        final double heightConverted
+                = UnitConversion.convertDistance( region.getHeight(),
+                                                  DistanceUnit.METERS,
+                                                  distanceUnit );
 
         // Declare the Region Boundary column headers, then get the table.
         final String[] boundarySpanNames = new String[] { "EXTENTS" };
         final String[] boundaryColumnNames = new String[] {
-                "LOWER LEFT CORNER (X, Y)",
-                "SIZE (WIDTH, HEIGHT)" };
+                "LOWER LEFT CORNER (X, Y)", "SIZE (WIDTH, HEIGHT)"
+        };
         final int numberOfBoundaryColumns = boundaryColumnNames.length;
         final int[] boundarySpanLengths = new int[] { numberOfBoundaryColumns };
 
         // Get a table to use for the Region Boundary.
         // NOTE: This also sets the column headers and their styles.
-        final List<List<Cell>> boundaryTableData = new ArrayList<>();
+        final List< List< Cell > > boundaryTableData = new ArrayList<>();
         final Table boundaryTable = PdfTools.createTable( boundaryTableData,
-                fonts,
-                boundarySpanNames,
-                boundarySpanLengths,
-                boundaryColumnNames,
-                numberOfBoundaryColumns,
-                false );
+                                                          fonts,
+                                                          boundarySpanNames,
+                                                          boundarySpanLengths,
+                                                          boundaryColumnNames,
+                                                          numberOfBoundaryColumns,
+                                                          false );
 
         // Write the Region Boundary Table.
         final String lowerLeftCorner = TextUtilities.getFormattedQuantityPair(
@@ -205,27 +208,23 @@ public final class FxPdfJetExporter {
         boundaryTableData.add( boundaryRowData );
 
         // Write the table to as many pages as are required to fit.
-        Point point = new Point(
-                PdfTools.PORTRAIT_LEFT_MARGIN,
-                initialPoint.getY() + 20 );
-        point = PdfTools.writeTable(
-                document,
-                page,
-                point,
-                fonts,
-                boundaryTableData,
-                boundaryTable,
-                Table.DATA_HAS_2_HEADER_ROWS,
-                true,
-                false );
+        Point point = new Point( PdfTools.PORTRAIT_LEFT_MARGIN,
+                                 initialPoint.getY() + 20 );
+        point = PdfTools.writeTable( document,
+                                     page,
+                                     point,
+                                     fonts,
+                                     boundaryTableData,
+                                     boundaryTable,
+                                     Table.DATA_HAS_2_HEADER_ROWS,
+                                     true,
+                                     false );
 
         // Declare the Surfaces column headers, then get the table.
         final String[] surfacesSpanNames = new String[] { "SURFACES" };
         final String[] surfacesColumnNames = new String[] {
-                "ID",
-                "SURFACE NAME",
-                "STATUS",
-                "MATERIAL NAME" };
+                "ID", "SURFACE NAME", "STATUS", "MATERIAL NAME"
+        };
         final int numberOfSurfacesColumns = surfacesColumnNames.length;
         final int[] surfacesSpanLengths = new int[] { numberOfSurfacesColumns };
 
@@ -236,57 +235,55 @@ public final class FxPdfJetExporter {
                 20, // COLUMN_SURFACE_ID
                 180, // COLUMN_SURFACE_NAME
                 100, // COLUMN_SURFACE_STATUS
-                240 }; // COLUMN_SURFACE_MATERIAL_NAME
+                240
+        }; // COLUMN_SURFACE_MATERIAL_NAME
 
         // Get a table to use for the Region Surfaces.
         // NOTE: This also sets the column headers and their styles.
         final List< List< Cell > > surfacesTableData = new ArrayList<>();
-        final Table surfacesTable = PdfTools.createTable(
-                surfacesTableData,
-                fonts,
-                surfacesSpanNames,
-                surfacesSpanLengths,
-                surfacesColumnNames,
-                numberOfSurfacesColumns,
-                surfacesColumnWidths,
-                false );
+        final Table surfacesTable = PdfTools.createTable( surfacesTableData,
+                                                          fonts,
+                                                          surfacesSpanNames,
+                                                          surfacesSpanLengths,
+                                                          surfacesColumnNames,
+                                                          numberOfSurfacesColumns,
+                                                          surfacesColumnWidths,
+                                                          false );
 
         // Write the Region Surfaces Table.
-        final List<Surface> numberedSurfaces = region.getSurfaces();
+        final List< Surface > numberedSurfaces = region.getSurfaces();
         for ( final Surface surfaceReference : numberedSurfaces ) {
             final List< Cell > surfacesRowData = new ArrayList<>();
 
             final String status = surfaceReference.isSurfaceBypassed()
-                    ? "Bypassed"
-                    : "Enabled";
-            PdfTools.addTableCell(
-                    surfacesRowData,
-                    fonts,
-                    Integer.toString( surfaceReference.getSurfaceNumber() ) );
-            PdfTools.addTableCell(
-                    surfacesRowData,
-                    fonts,
-                    surfaceReference.getLabel() );
+                                  ? "Bypassed"
+                                  : "Enabled";
+            PdfTools.addTableCell( surfacesRowData,
+                                   fonts,
+                                   Integer.toString( surfaceReference.getSurfaceNumber() ) );
+            PdfTools.addTableCell( surfacesRowData,
+                                   fonts,
+                                   surfaceReference.getLabel() );
             PdfTools.addTableCell( surfacesRowData, fonts, status );
-            PdfTools.addTableCell(
-                    surfacesRowData,
-                    fonts,
-                    surfaceReference.getSurfaceMaterial().abbreviation() );
+            PdfTools.addTableCell( surfacesRowData,
+                                   fonts,
+                                   surfaceReference.getSurfaceMaterial()
+                                                   .abbreviation() );
 
             surfacesTableData.add( surfacesRowData );
         }
 
         // Write the table to as many pages as are required to fit.
-        point.setPosition( PdfTools.PORTRAIT_LEFT_MARGIN, point.getY() + 20.0f );
-        PdfTools.writeTable(
-                document,
-                page,
-                point,
-                fonts,
-                surfacesTableData,
-                surfacesTable,
-                Table.DATA_HAS_2_HEADER_ROWS,
-                true,
-                false );
+        point.setPosition( PdfTools.PORTRAIT_LEFT_MARGIN,
+                           point.getY() + 20.0f );
+        PdfTools.writeTable( document,
+                             page,
+                             point,
+                             fonts,
+                             surfacesTableData,
+                             surfacesTable,
+                             Table.DATA_HAS_2_HEADER_ROWS,
+                             true,
+                             false );
     }
 }

@@ -30,9 +30,5 @@
  */
 /**
  * This package contains JavaFX wrappers for working with jpdfreport.
- *
- * @version 1.0
- *
- * @author Mark Schmieder
  */
 package com.mhschmieder.fxpdfreport;

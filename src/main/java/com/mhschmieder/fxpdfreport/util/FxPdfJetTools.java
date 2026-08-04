@@ -35,9 +35,10 @@ import com.mhschmieder.jpdfreport.PdfFonts;
 import com.mhschmieder.jpdfreport.PdfTools;
 import com.pdfjet.PDF;
 import com.pdfjet.Page;
-import javafx.scene.layout.Region;
 
 import java.awt.image.BufferedImage;
+
+import javafx.scene.layout.Region;
 
 /**
  * Static utility class to wrap the export of JavaFX nodes on the screen to PDF
@@ -47,7 +48,8 @@ import java.awt.image.BufferedImage;
 public final class FxPdfJetTools {
 
     // NOTE: The constructor is disabled, as this is a static class.
-    private FxPdfJetTools() {}
+    private FxPdfJetTools() {
+    }
 
     public static double writeVisualization( final PDF document,
                                              final Page visualizationPage,
@@ -62,29 +64,28 @@ public final class FxPdfJetTools {
                                              final Region chartLegend )
             throws Exception {
         // Get an AWT BufferedImage as a snapshot of the first chart.
-        final BufferedImage chart1Snapshot = ImageUtilities
-                .getBufferedImageSnapshot( chart1 );
+        final BufferedImage chart1Snapshot
+                = ImageUtilities.getBufferedImageSnapshot( chart1 );
 
         // Get an AWT BufferedImage as a snapshot of the second chart.
-        final BufferedImage chart2Snapshot = ImageUtilities
-                .getBufferedImageSnapshot( chart2 );
+        final BufferedImage chart2Snapshot
+                = ImageUtilities.getBufferedImageSnapshot( chart2 );
 
         // Get an AWT BufferedImage as a snapshot of the chart legend.
-        final BufferedImage chartLegendSnapshot = ImageUtilities
-                .getBufferedImageSnapshot( chartLegend );
+        final BufferedImage chartLegendSnapshot
+                = ImageUtilities.getBufferedImageSnapshot( chartLegend );
 
         // Write the visualization and return the metadata y-axis adjustment.
-        return PdfTools.writeVisualization(
-                document,
-                visualizationPage,
-                fonts,
-                chartLabel,
-                layoutWidth,
-                useChart1,
-                chart1Snapshot,
-                useChart2,
-                chart2Snapshot,
-                useLegend,
-                chartLegendSnapshot );
+        return PdfTools.writeVisualization( document,
+                                            visualizationPage,
+                                            fonts,
+                                            chartLabel,
+                                            layoutWidth,
+                                            useChart1,
+                                            chart1Snapshot,
+                                            useChart2,
+                                            chart2Snapshot,
+                                            useLegend,
+                                            chartLegendSnapshot );
     }
 }
