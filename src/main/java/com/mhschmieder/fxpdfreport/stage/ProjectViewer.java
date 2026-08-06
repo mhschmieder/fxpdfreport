@@ -175,6 +175,7 @@ public class ProjectViewer extends XStage {
         // First have the superclass initialize its content.
         initStage( jarRelativeIconFilename, defaultWidth, defaultHeight, true );
     }    // Add the Tool Bar's event listeners.
+
     // TODO: Use appropriate methodology to add an action linked to both
     //  the toolbar buttons and their associated menu items, so that when one
     //  is disabled the other is as well. Is this already true of what we do?
@@ -342,10 +343,10 @@ public class ProjectViewer extends XStage {
                     return FileStatus.READ_ERROR;
                 }
             }
-            else if (
-                    FilenameUtils.isExtension( fileNameCaseInsensitive, "html" )
-                    || FilenameUtils.isExtension( fileNameCaseInsensitive,
-                                                  "htm" ) ) {
+            else if ( FilenameUtils.isExtension( fileNameCaseInsensitive,
+                                                 "html" )
+                      || FilenameUtils.isExtension( fileNameCaseInsensitive,
+                                                    "htm" ) ) {
                 // Load the data from an HTML file.
                 final boolean fileOpened = IoUtilities.loadIntoStringBuilder(
                         file,
@@ -369,7 +370,9 @@ public class ProjectViewer extends XStage {
         updateCache( file, htmlBuffer );
 
         return FileStatus.OPENED;
-    }    protected final void doFileOpen() {
+    }
+
+    protected final void doFileOpen() {
         // NOTE: Use the on-line example to take file load status into account.
         fileOpen( this,
                   FileMode.OPEN,
@@ -417,10 +420,10 @@ public class ProjectViewer extends XStage {
                     }
                 }
             }
-            else if (
-                    FilenameUtils.isExtension( fileNameCaseInsensitive, "html" )
-                    || FilenameUtils.isExtension( fileNameCaseInsensitive,
-                                                  "htm" ) ) {
+            else if ( FilenameUtils.isExtension( fileNameCaseInsensitive,
+                                                 "html" )
+                      || FilenameUtils.isExtension( fileNameCaseInsensitive,
+                                                    "htm" ) ) {
                 if ( FileMode.SAVE_CONVERTED.equals( msliFileMode ) ) {
                     // Export the Converted Project to an HTML file using a File
                     // Writer. Overwrite it if it already exists.
@@ -437,7 +440,9 @@ public class ProjectViewer extends XStage {
         }
 
         return fileStatus;
-    }    protected final void doFileSaveAs() {
+    }
+
+    protected final void doFileSaveAs() {
         // Force the user to provide a filename for converted project views.
         fileSaveAs();
     }
@@ -463,7 +468,9 @@ public class ProjectViewer extends XStage {
             e.printStackTrace();
             return FileStatus.WRITE_ERROR;
         }
-    }    protected final void doNavigateBack() {
+    }
+
+    protected final void doNavigateBack() {
         // Update the web view with the previous HTML content.
         if ( _currentPageIndex <= 0 ) {
             return;
@@ -509,7 +516,9 @@ public class ProjectViewer extends XStage {
         _toolBar._fileActionButtons._fileSaveAsButton.setDisable( false );
         _toolBar._fileActionButtons._filePageSetupButton.setDisable( false );
         _toolBar._fileActionButtons._filePrintButton.setDisable( false );
-    }    protected final void doNavigateForward() {
+    }
+
+    protected final void doNavigateForward() {
         // Update the web view with the current HTML content.
         if ( _currentPageIndex >= ( _htmlBuffers.size() - 1 ) ) {
             return;
@@ -564,10 +573,6 @@ public class ProjectViewer extends XStage {
                : FileStatus.NOT_SAVED;
     }
 
-
-
-
-
     @Override
     protected final Node loadContent() {
         // Instantiate and return the custom Content Node.
@@ -580,8 +585,6 @@ public class ProjectViewer extends XStage {
 
         return contentPane;
     }
-
-
 
     // Add the Tool Bar for this Frame.
     @Override
@@ -602,10 +605,6 @@ public class ProjectViewer extends XStage {
         //  WebView content, so we invoke WebKit's own printing layout engine.
         printManager.print( _webView.getEngine() );
     }
-
-
-
-
 
     @SuppressWarnings( "nls" )
     private final void updateWebView( final StringBuilder htmlBuffer ) {
